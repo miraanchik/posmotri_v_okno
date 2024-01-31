@@ -1,0 +1,330 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: inherit;
+  font-weight: normal;
+}
+
+html {
+  block-size: 100%;
+}
+
+.page {
+  inline-size: 1200px;
+  block-size: 100%;
+  margin: auto;
+  color: #fff;
+  font-family: "Fira Sans Condensed", sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  background-color: #1b1919;
+  display: flex;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+ol,
+li,
+blockquote,
+fieldset {
+  border: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+.content {
+  margin: auto;
+  width: 1140px;
+  height: 534px;
+  display: grid;
+  grid-template-columns: 711px 1fr;
+  column-gap: 30px;
+  align-items: flex-end;
+  justify-items: flex-end;
+  overflow: hidden;
+}
+
+.result {
+  width: 711px;
+  display: block;
+  justify-content: flex-end; /* Измененное значение */
+  align-items: flex-end; /* Добавленное значение */
+}
+
+.result__video-container {
+  width: 100%;
+  margin-bottom: 16px;
+  position: relative;
+  display: flex;
+  align-self: flex-end;
+  object-fit: cover; /* заполняем все доступное пространство, сохраняя соотношение сторон */
+}
+
+.result__video {
+  width: 100%;
+}
+
+.search-form {
+  width: 711px; /* Указаны жесткие размеры согласно макеты */
+  height: 54px;
+  margin-left: 2px;
+  margin-bottom: 2px;
+  height: 54px;
+  display: flex; /* Устанавливаем форму flex-элементом */
+  flex-grow: 1; /* Разрешаем элементу занимать все свободное пространство */
+  gap: 40px;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.search-form:last-child {
+  align-items: flex-end;
+}
+
+.search-form__fieldset {
+  display: inline-flex; /* Устанавливаем форму flex-элементом */
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+  border-style: none;
+}
+
+.search-form__fieldset-title {
+  line-height: normal;
+}
+
+.search-form__textfield {
+  border: none;
+  appearance: none;
+  width: 225px;
+  height: 27px;
+  background-color: #1b1919;
+  color: rgba(255, 255, 255, 0.7);
+  border-top: 1px solid #fff;
+  border-bottom: 2px solid #fff;
+  font-size: initial;
+}
+.search-form__textfield:focus {
+  outline: none;
+}
+
+.search-form__textfield:hover {
+  text-decoration: none;
+}
+
+.search-form__label {
+  display: flex;
+  width: fit-content;
+  align-items: center;
+  gap: 5px;
+  position: relative;
+  cursor: pointer;
+}
+
+.search-form__label:has(:focus-visible) {
+  outline: 1px solid #fff;
+  outline-offset: 1px;
+}
+
+.search-form__checkbox-list {
+  width: 212px;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  list-style: none;
+  margin-bottom: 4px;
+}
+
+.search-form__pseudo-checkbox {
+  display: flex;
+  position: relative;
+  width: 19px;
+  height: 19px;
+  border: 1px solid #fff;
+}
+
+input[type="checkbox"]:checked + .search-form__pseudo-checkbox::before {
+  content: "";
+  width: 15px;
+  height: 15px;
+  background-color: #fff;
+  margin: auto;
+}
+
+.search-form__label-text {
+  position: relative;
+  width: fit-content;
+}
+
+.search-form__checkbox,
+.search-form__pseudo-checkbox,
+.search-form__label-text {
+  display: inline-block; /* отображение элементов в один ряд */
+  vertical-align: middle; /* Выравнивание по горизонтали */
+}
+
+.search-form__submit-button {
+  display: flex;
+  width: 194px;
+  flex-shrink: 0;
+}
+
+.content__details {
+  height: 534px;
+  width: 399px;
+}
+
+.title {
+  height: 210px;
+  width: 260px;
+  font-family: Oswald;
+  font-size: 75px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 94%; /* 70.5px */
+  text-transform: uppercase;
+  margin-bottom: 26px;
+}
+
+.content__accent {
+  color: #545050;
+}
+
+.content__list {
+  overflow: scroll; /* добавляет скролл при переполнении по вертикали */
+  height: 298px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.content__list::-webkit-scrollbar {
+  width: 0; /* задает ширину полосы прокрутки */
+}
+
+.content__list-item:not(:last-child) {
+  margin-bottom: 30px;
+}
+
+.content__video-card {
+  display: flex;
+  flex-direction: row; /* задаем направление рядов */
+  justify-content: flex-start; /* выравнивание элементов по главной оси */
+  align-items: flex-start; /* выравнивание элементов по дополнительной оси */
+}
+
+.content__video-card:focus {
+  outline: none;
+}
+
+.content__video-card:focus-visible {
+  outline: 1px solid #fff;
+  outline-offset: 1px;
+}
+
+.search-form__label:hover .search-form__label-text,
+.content__video-card:hover .content__video-card-description,
+.content__video-card:hover .content__video-card-title {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+}
+
+
+.content__video-card-thumbnail {
+  width: 194px;
+  height: 103px;
+  flex-shrink: 0;
+}
+
+.content__video-card-description-container {
+  flex: 1;
+}
+
+.content__card-link {
+  text-decoration: none;
+  color: #fff;
+  display: block;
+  margin: 2px;
+}
+
+.content__card-link_current{
+  background-color: grey;
+  color: #fff;
+  opacity: 0.8;
+  box-shadow: 0 0 5px #000;
+}
+
+.content__video-card-title {
+  color: #fff;
+  font-family: Oswald;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 100%; /* 30px */
+  text-transform: uppercase;
+}
+
+.content__video-card-description {
+  line-height: 16.2px; /* 90% */
+}
+
+.visually-hidden {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.more-button {
+  width: -webkit-fill-available;
+  gap: 10px;
+  flex-shrink: 0;
+  margin-bottom: 2px;
+}
+
+button {
+  height: 34px;
+  position: relative;
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-weight: 700;
+  border: 1px solid #fff;
+  background-color: #1b1919;
+  color: #fff;
+}
+
+button:focus {
+  outline: none;
+}
+
+button:active {
+  background-color: grey;
+}
+
+button:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+}
+
+button,
+.search-form__pseudo-checkbox,
+.content__list-item {
+  cursor: pointer;
+}
