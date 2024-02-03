@@ -44,6 +44,15 @@ ol {
   list-style: none;
 }
 
+a {
+  outline: none; /* Сбрасываем стандартный фокус */
+}
+
+a:focus {
+  outline: 1px solid #fff;
+  outline-offset: 1px;
+}
+
 .content {
   margin: auto;
   width: 1140px;
@@ -59,34 +68,32 @@ ol {
 .result {
   width: 711px;
   display: block;
-  justify-content: flex-end; /* Измененное значение */
-  align-items: flex-end; /* Добавленное значение */
+  justify-content: flex-end; 
+  align-items: flex-end; 
 }
 
 .result__video-container {
+  height: 386px;
   width: 100%;
   margin-bottom: 16px;
   position: relative;
   display: flex;
-  align-self: flex-end;
+  align-self: flex-start;
+  justify-content: flex-start;
   object-fit: cover; /* заполняем все доступное пространство, сохраняя соотношение сторон */
 }
 
 .result__video {
   width: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .search-form {
-  width: 711px; /* Указаны жесткие размеры согласно макеты */
-  height: 54px;
-  margin-left: 2px;
-  margin-bottom: 2px;
-  height: 54px;
-  display: flex; /* Устанавливаем форму flex-элементом */
+  display: flex;
   flex-grow: 1; /* Разрешаем элементу занимать все свободное пространство */
   gap: 40px;
   align-items: flex-start;
-  width: 100%;
 }
 
 .search-form:last-child {
@@ -94,7 +101,7 @@ ol {
 }
 
 .search-form__fieldset {
-  display: inline-flex; /* Устанавливаем форму flex-элементом */
+  display: inline-flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 5px;
@@ -113,9 +120,16 @@ ol {
   background-color: #1b1919;
   color: rgba(255, 255, 255, 0.7);
   border-top: 1px solid #fff;
-  border-bottom: 2px solid #fff;
-  font-size: initial;
+  border-bottom: 1px solid #fff;
 }
+
+.search-form__textfield::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+  font-family: "Fira Sans Condensed", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+}
+
 .search-form__textfield:focus {
   outline: none;
 }
@@ -145,7 +159,7 @@ ol {
   align-items: flex-start;
   justify-content: space-between;
   list-style: none;
-  margin-bottom: 4px;
+  margin-bottom: 5px;
 }
 
 .search-form__pseudo-checkbox {
@@ -158,10 +172,12 @@ ol {
 
 input[type="checkbox"]:checked + .search-form__pseudo-checkbox::before {
   content: "";
+  appearance: none; 
+  display: flex;
   width: 15px;
   height: 15px;
   background-color: #fff;
-  margin: auto;
+  margin: 1px;
 }
 
 .search-form__label-text {
@@ -172,14 +188,14 @@ input[type="checkbox"]:checked + .search-form__pseudo-checkbox::before {
 .search-form__checkbox,
 .search-form__pseudo-checkbox,
 .search-form__label-text {
-  display: inline-block; /* отображение элементов в один ряд */
+  display: inline-block;
   vertical-align: middle; /* Выравнивание по горизонтали */
 }
 
 .search-form__submit-button {
   display: flex;
   width: 194px;
-  flex-shrink: 0;
+  flex-shrink: 1;
 }
 
 .content__details {
@@ -188,8 +204,9 @@ input[type="checkbox"]:checked + .search-form__pseudo-checkbox::before {
 }
 
 .title {
-  height: 210px;
-  width: 260px;
+  padding-top: 2px;
+  max-height: 210px;
+  max-width: 260px;
   font-family: Oswald;
   font-size: 75px;
   font-style: normal;
@@ -215,23 +232,14 @@ input[type="checkbox"]:checked + .search-form__pseudo-checkbox::before {
 }
 
 .content__list-item:not(:last-child) {
-  margin-bottom: 30px;
+  margin-bottom: 35px;
 }
 
 .content__video-card {
   display: flex;
-  flex-direction: row; /* задаем направление рядов */
-  justify-content: flex-start; /* выравнивание элементов по главной оси */
-  align-items: flex-start; /* выравнивание элементов по дополнительной оси */
-}
-
-.content__video-card:focus {
-  outline: none;
-}
-
-.content__video-card:focus-visible {
-  outline: 1px solid #fff;
-  outline-offset: 1px;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .search-form__label:hover .search-form__label-text,
@@ -246,6 +254,8 @@ input[type="checkbox"]:checked + .search-form__pseudo-checkbox::before {
   width: 194px;
   height: 103px;
   flex-shrink: 0;
+  object-fit: cover;
+  object-position: center;
 }
 
 .content__video-card-description-container {
@@ -262,7 +272,6 @@ input[type="checkbox"]:checked + .search-form__pseudo-checkbox::before {
 .content__card-link_current{
   background-color: grey;
   color: #fff;
-  opacity: 0.8;
   box-shadow: 0 0 5px #000;
 }
 
@@ -292,9 +301,7 @@ input[type="checkbox"]:checked + .search-form__pseudo-checkbox::before {
 
 .more-button {
   width: -webkit-fill-available;
-  gap: 10px;
-  flex-shrink: 0;
-  margin-bottom: 2px;
+  margin: 0 2px 2px;
 }
 
 button {
@@ -308,10 +315,13 @@ button {
   border: 1px solid #fff;
   background-color: #1b1919;
   color: #fff;
+  font-family: "Fira Sans Condensed", sans-serif;
+  font-size: 18px;
 }
 
 button:focus {
-  outline: none;
+  outline: 1px solid #fff;
+  outline-offset: 1px;
 }
 
 button:active {
